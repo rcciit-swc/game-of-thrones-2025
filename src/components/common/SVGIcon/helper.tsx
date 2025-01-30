@@ -13,4 +13,8 @@ export const IconMap = {
   logo: lazy(() => import('./components/LogoSVG')),
   footerLeft: lazy(() => import('./components/FooterLeft')),
   footerRight: lazy(() => import('./components/FooterRight')),
+  pin: lazy(() => import('./components/PinSVG')),
+  contactBg: lazy(() => import('./components/ContactBgSVG')),
+  contactBg1: lazy(() => import('./components/ContactComSVG')),
+  contactBg2: lazy(() => import('./components/ContactSVG')),
 };
