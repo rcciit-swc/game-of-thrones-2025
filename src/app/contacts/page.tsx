@@ -1,7 +1,10 @@
-import React from 'react';
+import { Metadata } from "next";
 
-const page = () => {
-  return <div>Contacts</div>;
+import Block from "./_components/Block";
+
+
+const ContactUs = () => {
+  return <Block />;
 };
 
-export default page;
+export default ContactUs;

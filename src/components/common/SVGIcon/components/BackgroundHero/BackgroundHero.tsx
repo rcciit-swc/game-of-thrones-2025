@@ -25,7 +25,7 @@ const BackgroundHero: FC<IIconProps> = (props) => {
         height="2030.49"
         transform="rotate(-61.5621 -234.651 594.878)"
         fill="url(#pattern0_43_1078)"
-        fill-opacity="0.63"
+        fillOpacity="0.63"
       />
       <defs>
         <pattern

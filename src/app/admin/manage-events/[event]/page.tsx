@@ -98,7 +98,8 @@ export default function AddEventPage() {
           <BasicInformation form={form} />
           <ScheduleAndDescription form={form} />
           <RulesAndGuidelines form={form} />
-          <LinksAndCoordinators />
+          {/* commenting this for now will uncomment when i will write code for edit event */}
+          {/* <LinksAndCoordinators /> */}
         </form>
       </Form>
     </div>

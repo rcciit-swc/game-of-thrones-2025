@@ -3,60 +3,32 @@
 import React, { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import EventCard from './EventCard';
+import Link from 'next/link';
 import { Heading } from '../common';
+import EventCard from '@/components/events/EventCard';
+import { events } from '@/lib/events';
 
-const events = [
-  {
-    title: 'BADMINTON',
-    subtitle: 'TOURNAMENT',
-    dates: '14TH 15TH',
-    month: 'FEBRUARY 2025',
-    imageId: 'BADMINTON',
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    },
   },
-  {
-    title: 'FOOTBALL',
-    subtitle: 'TOURNAMENT',
-    dates: '14TH 15TH',
-    month: 'FEBRUARY 2025',
-    imageId: 'FOOTBALL',
-  },
-  {
-    title: 'CHESS',
-    subtitle: 'TOURNAMENT',
-    dates: '14TH 15TH',
-    month: 'FEBRUARY 2025',
-    imageId: 'CHESS',
-  },
-  {
-    title: 'TUG OF WAR',
-    subtitle: 'TOURNAMENT',
-    dates: '14TH 15TH',
-    month: 'FEBRUARY 2025',
-    imageId: 'TUG-OF-WAR',
-  },
-  {
-    title: 'HANDBALL',
-    subtitle: 'TOURNAMENT',
-    dates: '14TH 15TH',
-    month: 'FEBRUARY 2025',
-    imageId: 'HANDBALL',
-  },
-  {
-    title: 'KABADDI',
-    subtitle: 'TOURNAMENT',
-    dates: '14TH 15TH',
-    month: 'FEBRUARY 2025',
-    imageId: 'KABADDI',
-  },
-];
+};
 
-export default function EventsPage() {
+const cardVariants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: 'easeOut' },
+  },
+};
+
+export default function EventPage() {
   const controls = useAnimation();
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.2,
-  });
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
 
   useEffect(() => {
     if (inView) {
@@ -64,49 +36,38 @@ export default function EventsPage() {
     }
   }, [controls, inView]);
 
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: -20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: 'easeOut',
-      },
-    },
+  const formatSchedule = (schedule: string) => {
+    const [dates, month] = schedule.split(' ');
+    return { dates, month };
   };
 
   return (
-    <div className="min-h-screen w-full bg-transparent text-white relative overflow-hidden ">
+    <div className="min-h-screen w-full bg-transparent text-white relative overflow-hidden">
       <div className="container mx-auto px-4 py-20">
         <Heading text="EVENTS" />
-        <motion.div
-          ref={ref}
-          initial="hidden"
-          animate={controls}
-          variants={containerVariants}
+        <motion.div 
+          ref={ref} 
+          initial="hidden" 
+          animate={controls} 
+          variants={containerVariants} 
           className="flex flex-wrap justify-center gap-28"
         >
-          {events.map((event, index) => (
-            <motion.div key={index} variants={cardVariants}>
-              <EventCard
-                title={event.title}
-                subtitle={event.subtitle}
-                dates={event.dates}
-                month={event.month}
-                imageId={event.imageId}
-              />
-            </motion.div>
-          ))}
+          {events.map((event) => {
+            const { dates, month } = formatSchedule(event.schedule);
+            return (
+              <motion.div key={event.name} variants={cardVariants}>
+                <Link href={`/events/${encodeURIComponent(event.name.toLowerCase())}`}>
+                  <EventCard 
+                    title={event.name}
+                    subtitle={event.description}
+                    dates={dates}
+                    month={month}
+                    imageId={event.imagePath}
+                  />
+                </Link>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </div>

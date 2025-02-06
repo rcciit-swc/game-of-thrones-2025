@@ -12,10 +12,24 @@ const SVGIcon = (props: ISVGIconProps) => {
   const WrappedIcon = () =>
     className ? (
       <ContainerType style={style} className={className}>
-        <Icon {...rest} className={className} />
+        <Icon
+          {...{
+            ...rest,
+            width: typeof rest.width === 'string' ? parseInt(rest.width, 10) : rest.width,
+            height: typeof rest.height === 'string' ? parseInt(rest.height, 10) : rest.height,
+          }}
+          className={className}
+        />
       </ContainerType>
     ) : (
-      <Icon {...rest} className={className} />
+      <Icon
+        {...{
+          ...rest,
+          width: typeof rest.width === 'string' ? parseInt(rest.width, 10) : rest.width,
+          height: typeof rest.height === 'string' ? parseInt(rest.height, 10) : rest.height,
+        }}
+        className={className}
+      />
     );
 
   return (

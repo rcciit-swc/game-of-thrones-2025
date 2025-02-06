@@ -22,7 +22,7 @@ const FooterRight: FC<IIconProps> = (props) => {
         width="640"
         height="640"
         fill="url(#pattern0_127_535)"
-        fill-opacity="0.47"
+        fillOpacity="0.47"
       />
       <defs>
         <pattern

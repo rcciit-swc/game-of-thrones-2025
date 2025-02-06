@@ -32,7 +32,7 @@ const FooterSVG: FC<IIconProps> = (props) => {
         width="264"
         height="373.459"
         fill="url(#pattern0_192_32)"
-        fill-opacity="0.76"
+        fillOpacity="0.76"
       />
       <rect
         x="1076"
@@ -40,7 +40,7 @@ const FooterSVG: FC<IIconProps> = (props) => {
         width="640"
         height="640"
         fill="url(#pattern1_192_32)"
-        fill-opacity="0.47"
+        fillOpacity="0.47"
       />
       <rect
         x="-15"
@@ -49,7 +49,7 @@ const FooterSVG: FC<IIconProps> = (props) => {
         height="127"
         transform="rotate(-90 -15 142)"
         fill="url(#pattern2_192_32)"
-        fill-opacity="0.68"
+        fillOpacity="0.68"
       />
       <rect
         x="-154"
@@ -57,7 +57,7 @@ const FooterSVG: FC<IIconProps> = (props) => {
         width="730"
         height="587"
         fill="url(#pattern3_192_32)"
-        fill-opacity="0.53"
+        fillOpacity="0.53"
       />
       <defs>
         <filter

@@ -53,7 +53,7 @@ export function BasicInformation({ form }: { form: any }) {
                 </FormLabel>
                 <FormControl>
                   <div className="relative">
-                    <span className="absolute left-3 top-2.5">₹</span>
+                    <span className="absolute left-3 top-2">₹</span>
                     <Input
                       className="pl-7 bg-[#1e2432] text-white border-gray-600 focus-visible:ring-[#9158FF] focus-visible:border-[#9158FF]"
                       placeholder="0.00"
@@ -76,7 +76,7 @@ export function BasicInformation({ form }: { form: any }) {
                 <FormLabel className="text-gray-300">Prize Pool</FormLabel>
                 <FormControl>
                   <div className="relative">
-                    <span className="absolute left-3 top-2.5">₹</span>
+                    <span className="absolute left-3 top-2">₹</span>
                     <Input
                       className="pl-7 bg-[#1e2432] text-white border-gray-600 focus-visible:ring-[#9158FF] focus-visible:border-[#9158FF]"
                       placeholder="0.00"
@@ -123,9 +123,10 @@ export function BasicInformation({ form }: { form: any }) {
                   <Input
                     type="number"
                     min={1}
-                    {...field}
+                    {...form.register("minTeamSize", { valueAsNumber: true })}
                     className="bg-[#1e2432] text-white border-gray-600 focus-visible:ring-[#9158FF] focus-visible:border-[#9158FF]"
                   />
+
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -143,7 +144,7 @@ export function BasicInformation({ form }: { form: any }) {
                   <Input
                     type="number"
                     min={1}
-                    {...field}
+                    {...form.register("maxTeamSize", { valueAsNumber: true })}
                     className="bg-[#1e2432] text-white border-gray-600 focus-visible:ring-[#9158FF] focus-visible:border-[#9158FF]"
                   />
                 </FormControl>
